@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="resourceCSVFile" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg name="path" value="data/questions.csv" />
+    </bean>
+
+    <bean id="csvQuestionsReader" class="yaklyushkin.spring_2019_02.hw01.dao.impl.CSVQuestionsReader">
+        <constructor-arg name="filePath" value="#{resourceCSVFile.getFile().getAbsolutePath()}" />
+    </bean>
+
+    <bean id="questionsService" class="yaklyushkin.spring_2019_02.hw01.service.impl.SimpleQuestionsReadService">
+        <constructor-arg name="dao" ref="csvQuestionsReader"/>
+    </bean>
+
+    <bean id="personProvider" class="yaklyushkin.spring_2019_02.hw01.service.impl.ConsolePersonProvider" />
+
+    <bean id="quizService" class="yaklyushkin.spring_2019_02.hw01.service.impl.SimpleQuizService" />
+</beans>
