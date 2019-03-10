@@ -1,0 +1,5 @@
+"calculate 1 + 1","2"
+"calculate 1 x 1","1"
+"calculate 1 + 0","1"
+"calculate 1 x 0","0"
+"calculate 1 + 2 + 3","6"
