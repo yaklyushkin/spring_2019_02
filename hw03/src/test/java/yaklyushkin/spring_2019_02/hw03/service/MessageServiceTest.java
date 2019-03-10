@@ -1,4 +1,4 @@
-package yaklyushkin.spring_2019_02.hw03.dao;
+package yaklyushkin.spring_2019_02.hw03.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
