@@ -2,30 +2,30 @@ package yaklyushkin.spring_2019_02.hw01.domain;
 
 import yaklyushkin.spring_2019_02.hw01.exceptions.WrongDataException;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Question {
 
     public Question(String question, String answer) throws WrongDataException {
-        if ((question == null) ||
-            (question.trim().length() == 0)) {
+        if (StringUtils.isBlank(question)) {
             throw new WrongDataException("Задан пустой вопрос!");
         }
-        if ((answer == null) ||
-            (answer .trim().length() == 0)) {
+        if (StringUtils.isBlank(answer)) {
             throw new WrongDataException("Задан пустой ответ!");
         }
-        this._question = question.trim();
-        this._answer = answer.trim();
+        this.question = question.trim();
+        this.answer = answer.trim();
     }
 
     public String getQuestion() {
-        return this._question;
+        return this.question;
     }
 
     public boolean isAnswerCorrect(String answer) {
-        return (this._answer.equals(answer.trim()));
+        return (this.answer.equals(answer.trim()));
     }
 
-    private final String _question;
+    private final String question;
 
-    private final String _answer;
+    private final String answer;
 }

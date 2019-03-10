@@ -1,7 +1,6 @@
 package yaklyushkin.spring_2019_02.hw01.dao.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
+
 import yaklyushkin.spring_2019_02.hw01.consts.Consts;
 import yaklyushkin.spring_2019_02.hw01.dao.QuestionsDAO;
 import yaklyushkin.spring_2019_02.hw01.domain.Question;
@@ -9,10 +8,12 @@ import yaklyushkin.spring_2019_02.hw01.exceptions.WrongDataException;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 
 import javax.annotation.PostConstruct;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,11 +24,16 @@ import java.util.Locale;
 
 public class CSVQuestionsReader implements QuestionsDAO {
 
-    @Value("${questions.count}")
-    private int questionsCount;
-
-    public CSVQuestionsReader(String filePath) {
+    public CSVQuestionsReader(
+            String filePath,
+            @Value("${common.language}") String language,
+            @Value("${questions.count}") int questionsCount,
+            @Autowired
+            MessageSource messageSource) {
         this.filePath = filePath;
+        this.language = language;
+        this.questionsCount = questionsCount;
+        this.messageSource = messageSource;
     }
 
     @PostConstruct
@@ -68,13 +74,13 @@ public class CSVQuestionsReader implements QuestionsDAO {
 
     private final String filePath;
 
+    private final String language;
+
+    private final int questionsCount;
+
+    private final MessageSource messageSource;
+
     private List<Question> questions;
-
-    @Value("${common.language}")
-    private String language;
-
-    @Autowired
-    private MessageSource messageSource;
 
     private String msgFileErr;
     private String msgParseErr;

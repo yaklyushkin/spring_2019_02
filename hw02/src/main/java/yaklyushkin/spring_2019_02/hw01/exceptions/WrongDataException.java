@@ -4,12 +4,12 @@ public class WrongDataException extends Exception {
 
     public WrongDataException(String message)
     {
-        this._message = message;
+        this.message = message;
     }
 
     public String getMessage() {
-        return _message;
+        return message;
     }
 
-    private String _message;
+    private String message;
 }
