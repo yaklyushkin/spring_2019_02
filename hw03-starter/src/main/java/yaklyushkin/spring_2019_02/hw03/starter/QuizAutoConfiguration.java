@@ -36,6 +36,9 @@ import java.io.IOException;
 public class QuizAutoConfiguration {
 
     public QuizAutoConfiguration(Props props) {
+        logger.info(String.format(
+                "QuizAutoConfiguration: init with language='%s', filePath='%s', questionsCount=%d",
+                props.getLanguage(), props.getFilePath(), props.getQuestionsCount()));
         this.props = props;
         this.language = this.props.getLanguage() == null ? Consts.LANGUAGE_RUSSIAN : props.getLanguage();
     }
