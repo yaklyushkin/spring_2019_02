@@ -1,8 +1,6 @@
 package yaklyushkin_otus.spring_2019_02.hw04application;
 
-import org.springframework.context.ApplicationContext;
-import yaklyushkin.spring_2019_02.hw04.runner.Runner;
-import yaklyushkin_otus.spring_2019_02.hw04application.starter.QuizAutoConfiguration;
+import yaklyushkin_otus.spring_2019_02.hw04application.config.Hw04Configuration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +21,7 @@ public class ApplicationTest {
     private static class Application {
 
         private void test() {
-            ApplicationContext ctx = SpringApplication.run(QuizAutoConfiguration.class);
-            /*Runner runner = ctx.getBean(Runner.class);
-            runner.run();*/
+            SpringApplication.run(Hw04Configuration.class);
         }
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootTest(classes=QuizAutoConfiguration.class)
-public class Hw04ApplicationTests {
+public class QuizAutoConfigurationTests {
 
     @Test
     public void contextLoads() {
