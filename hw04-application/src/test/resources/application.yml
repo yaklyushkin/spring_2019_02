@@ -1,0 +1,11 @@
+hw04:
+  # russian для русского
+  # english для английского
+  language: "english"
+
+  filePath: "data/quiz_%s.csv"
+
+  questionsCount: 3
+
+application:
+  name: "HW04 Spring Shell Application"
