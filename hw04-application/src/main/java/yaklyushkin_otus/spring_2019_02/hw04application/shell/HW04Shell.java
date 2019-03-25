@@ -1,6 +1,6 @@
 package yaklyushkin_otus.spring_2019_02.hw04application.shell;
 
-import yaklyushkin.spring_2019_02.hw04.runner.Runner;
+import yaklyushkin_otus.spring_2019_02.hw04.runner.Runner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;

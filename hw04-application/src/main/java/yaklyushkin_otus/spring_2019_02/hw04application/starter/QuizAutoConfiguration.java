@@ -1,20 +1,20 @@
 package yaklyushkin_otus.spring_2019_02.hw04application.starter;
 
-import yaklyushkin.spring_2019_02.hw04.consts.Consts;
-import yaklyushkin.spring_2019_02.hw04.dao.QuestionsDAO;
-import yaklyushkin.spring_2019_02.hw04.dao.impl.CSVQuestionsReader;
-import yaklyushkin.spring_2019_02.hw04.exceptions.WrongDataException;
-import yaklyushkin.spring_2019_02.hw04.runner.Runner;
-import yaklyushkin.spring_2019_02.hw04.runner.impl.DefaultRunner;
-import yaklyushkin.spring_2019_02.hw04.service.MessageService;
-import yaklyushkin.spring_2019_02.hw04.service.PersonProvider;
-import yaklyushkin.spring_2019_02.hw04.service.QuestionsReadService;
-import yaklyushkin.spring_2019_02.hw04.service.QuizService;
-import yaklyushkin.spring_2019_02.hw04.service.UserInteractionService;
-import yaklyushkin.spring_2019_02.hw04.service.impl.ConsolePersonProvider;
-import yaklyushkin.spring_2019_02.hw04.service.impl.ConsoleUserInteraction;
-import yaklyushkin.spring_2019_02.hw04.service.impl.SimpleQuestionsReadService;
-import yaklyushkin.spring_2019_02.hw04.service.impl.SimpleQuizService;
+import yaklyushkin_otus.spring_2019_02.hw04.consts.Consts;
+import yaklyushkin_otus.spring_2019_02.hw04.dao.QuestionsDAO;
+import yaklyushkin_otus.spring_2019_02.hw04.dao.impl.CSVQuestionsReader;
+import yaklyushkin_otus.spring_2019_02.hw04.exceptions.WrongDataException;
+import yaklyushkin_otus.spring_2019_02.hw04.runner.Runner;
+import yaklyushkin_otus.spring_2019_02.hw04.runner.impl.DefaultRunner;
+import yaklyushkin_otus.spring_2019_02.hw04.service.MessageService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.PersonProvider;
+import yaklyushkin_otus.spring_2019_02.hw04.service.QuestionsReadService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.QuizService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.UserInteractionService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.impl.ConsolePersonProvider;
+import yaklyushkin_otus.spring_2019_02.hw04.service.impl.ConsoleUserInteraction;
+import yaklyushkin_otus.spring_2019_02.hw04.service.impl.SimpleQuestionsReadService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.impl.SimpleQuizService;
 import yaklyushkin_otus.spring_2019_02.hw04application.service.impl.SpringMessageSource;
 
 import org.slf4j.Logger;

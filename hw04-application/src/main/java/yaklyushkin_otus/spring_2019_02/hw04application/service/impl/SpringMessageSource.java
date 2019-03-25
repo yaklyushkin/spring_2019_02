@@ -1,6 +1,6 @@
 package yaklyushkin_otus.spring_2019_02.hw04application.service.impl;
 
-import yaklyushkin.spring_2019_02.hw04.service.MessageService;
+import yaklyushkin_otus.spring_2019_02.hw04.service.MessageService;
 
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
