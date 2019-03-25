@@ -59,14 +59,12 @@ public class QuizAutoConfiguration {
             throw new WrongDataException(String.format("Не задан язык приложения: '%s'!", this.language));
         }
 
-        String fileName =
-                this.props.getFilePath() == null ? "data/questions_%s.csv" : this.props.getFilePath();
+        String fileName = this.props.getFilePath();
         String csvFileName = String.format(fileName, this.language);
         ClassPathResource resourceCSVFile = new ClassPathResource(csvFileName);
         String filePath = resourceCSVFile.getFile().getAbsolutePath();
 
-        int questionsCount =
-                this.props.getQuestionsCount() == 0 ? 5 : this.props.getQuestionsCount();
+        int questionsCount = this.props.getQuestionsCount();
 
         return new CSVQuestionsReader(filePath, this.language, questionsCount, messageSource);
     }

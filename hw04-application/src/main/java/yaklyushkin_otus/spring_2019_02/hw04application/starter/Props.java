@@ -1,5 +1,7 @@
 package yaklyushkin_otus.spring_2019_02.hw04application.starter;
 
+import yaklyushkin_otus.spring_2019_02.hw04.consts.Consts;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix="hw04")
@@ -29,9 +31,9 @@ public class Props {
         this.questionsCount = questionsCount;
     }
 
-    private String language;
+    private String language = Consts.LANGUAGE_RUSSIAN;
 
-    private String filePath;
+    private String filePath = "data/questions_%s.csv";
 
-    private int questionsCount;
+    private int questionsCount = 5;
 }
