@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  yaklyushkin_otus.spring_2019_02.hw04application.starter.QuizAutoConfiguration
