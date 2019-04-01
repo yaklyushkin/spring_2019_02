@@ -36,6 +36,14 @@ public class Genre {
         return Objects.hash(genreId, genreName);
     }
 
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "genreId=" + genreId +
+                ", genreName='" + genreName + '\'' +
+                '}';
+    }
+
     private final int genreId;
 
     private final String genreName;

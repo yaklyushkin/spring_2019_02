@@ -50,6 +50,16 @@ public class Book {
         return Objects.hash(bookId, title, authors, genres);
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", authors=" + authors +
+                ", genres=" + genres +
+                '}';
+    }
+
     private final int bookId;
 
     private final String title;

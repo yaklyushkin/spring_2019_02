@@ -48,6 +48,16 @@ public class Author {
         return Objects.hash(authorId, authorSurname, authorName, authorPatronymic);
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", authorSurname='" + authorSurname + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", authorPatronymic='" + authorPatronymic + '\'' +
+                '}';
+    }
+
     private final int authorId;
 
     private final String authorSurname;
