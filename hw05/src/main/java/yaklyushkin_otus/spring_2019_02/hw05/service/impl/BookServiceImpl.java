@@ -6,6 +6,8 @@ import yaklyushkin_otus.spring_2019_02.hw05.domain.Book;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Genre;
 import yaklyushkin_otus.spring_2019_02.hw05.service.BookService;
 
+import java.util.List;
+
 public class BookServiceImpl implements BookService {
 
     public BookServiceImpl(BookDAO dao) {
@@ -110,6 +112,21 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book removeGenreByBook(Book bookId, int genreId) {
         return this.dao.removeGenreByBook(bookId, genreId);
+    }
+
+    @Override
+    public Book getById(int bookId) {
+        return this.dao.getById(bookId);
+    }
+
+    @Override
+    public List<Book> getAll() {
+        return this.dao.getAll();
+    }
+
+    @Override
+    public int count() {
+        return this.dao.count();
     }
 
     private final BookDAO dao;

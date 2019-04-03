@@ -4,6 +4,8 @@ import yaklyushkin_otus.spring_2019_02.hw05.domain.Author;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Book;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Genre;
 
+import java.util.List;
+
 public interface BookService {
 
     Book insert(Book book);
@@ -45,4 +47,10 @@ public interface BookService {
     Book removeGenreByIds(int bookId, int genreId);
 
     Book removeGenreByBook(Book bookId, int genreId);
+
+    Book getById(int bookId);
+
+    List<Book> getAll();
+
+    int count();
 }

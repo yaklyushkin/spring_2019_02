@@ -4,6 +4,8 @@ import yaklyushkin_otus.spring_2019_02.hw05.dao.GenreDAO;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Genre;
 import yaklyushkin_otus.spring_2019_02.hw05.service.GenreService;
 
+import java.util.List;
+
 public class GenreServiceImpl implements GenreService {
 
     public GenreServiceImpl(GenreDAO dao) {
@@ -28,6 +30,21 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public Genre deleteById(int genreId) {
         return this.dao.deleteById(genreId);
+    }
+
+    @Override
+    public Genre getById(int genreId) {
+        return this.dao.getById(genreId);
+    }
+
+    @Override
+    public List<Genre> getAll() {
+        return this.dao.getAll();
+    }
+
+    @Override
+    public int count() {
+        return this.dao.count();
     }
 
     private final GenreDAO dao;

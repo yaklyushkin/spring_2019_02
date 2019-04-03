@@ -4,6 +4,8 @@ import yaklyushkin_otus.spring_2019_02.hw05.dao.AuthorDAO;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Author;
 import yaklyushkin_otus.spring_2019_02.hw05.service.AuthorService;
 
+import java.util.List;
+
 public class AuthorServiceImpl implements AuthorService {
 
     public AuthorServiceImpl(AuthorDAO dao) {
@@ -28,6 +30,21 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author deleteById(int authorId) {
         return this.dao.deleteById(authorId);
+    }
+
+    @Override
+    public Author getById(int authorId) {
+        return this.dao.getById(authorId);
+    }
+
+    @Override
+    public List<Author> getAll() {
+        return this.dao.getAll();
+    }
+
+    @Override
+    public int count() {
+        return this.dao.count();
     }
 
     private final AuthorDAO dao;
