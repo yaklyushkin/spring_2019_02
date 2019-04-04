@@ -1,5 +1,6 @@
 package yaklyushkin_otus.spring_2019_02.hw05_app;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -19,6 +20,8 @@ import org.springframework.shell.standard.commands.StandardCommandsAutoConfigura
 })*/
 @ComponentScan(basePackages={
         //"yaklyushkin_otus.spring_2019_02.hw05_app.shell",
+        "yaklyushkin_otus.spring_2019_02.hw05_app.repository",
         "yaklyushkin_otus.spring_2019_02.hw05_app.config"})
+@EnableAutoConfiguration
 public class Hw05Configuration {
 }

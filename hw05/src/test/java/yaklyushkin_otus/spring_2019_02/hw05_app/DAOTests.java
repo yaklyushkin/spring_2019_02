@@ -6,14 +6,13 @@ import yaklyushkin_otus.spring_2019_02.hw05.domain.Author;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Genre;
 import yaklyushkin_otus.spring_2019_02.hw05.exceptions.WrongDataException;
 import yaklyushkin_otus.spring_2019_02.hw05.service.AuthorService;
+import yaklyushkin_otus.spring_2019_02.hw05.service.GenreService;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import yaklyushkin_otus.spring_2019_02.hw05.service.GenreService;
 
 public class DAOTests {
 
@@ -84,7 +83,6 @@ public class DAOTests {
         }
     }
 
-    @SpringBootApplication
     private static class Application {
 
         private ApplicationContext test() {

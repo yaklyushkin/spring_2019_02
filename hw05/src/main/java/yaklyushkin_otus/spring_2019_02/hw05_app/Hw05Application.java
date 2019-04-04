@@ -14,12 +14,10 @@ import yaklyushkin_otus.spring_2019_02.hw05.service.GenreService;
 import yaklyushkin_otus.spring_2019_02.hw05.service.MessageService;
 import yaklyushkin_otus.spring_2019_02.hw05_app.config.Props;
 
-@SpringBootApplication
-public class HW05Application {
+public class Hw05Application {
 
     public static void main(String[] args) throws WrongDataException {
-        //ApplicationContext ctx = SpringApplication.run(Hw05Configuration.class, args);
-        ApplicationContext ctx = SpringApplication.run(HW05Application.class, args);
+        ApplicationContext ctx = SpringApplication.run(Hw05Configuration.class, args);
 
 
     }
