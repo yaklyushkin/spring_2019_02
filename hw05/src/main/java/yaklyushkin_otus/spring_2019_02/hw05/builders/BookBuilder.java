@@ -8,6 +8,7 @@ import yaklyushkin_otus.spring_2019_02.hw05.exceptions.WrongDataException;
 import yaklyushkin_otus.spring_2019_02.hw05.service.MessageService;
 import yaklyushkin_otus.spring_2019_02.hw05.utils.StrUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,6 +30,10 @@ public class BookBuilder {
         return new Book(bookId, title, authors, genres);
     }
 
+    public final Book build(int bookId, String title) throws WrongDataException {
+        return this.build(bookId, title, this.emptyAuthors, this.emptyGenres);
+    }
+
     private void checkId(int genreId) throws WrongDataException {
         if (genreId < 0) {
             throw new WrongDataException(String.format(this.msgErrorBookId, genreId));
@@ -46,4 +51,8 @@ public class BookBuilder {
     private final String msgErrorBookId;
 
     private final String msgErrorTitle;
+
+    private final List<Author> emptyAuthors = Collections.emptyList();
+
+    private final List<Genre> emptyGenres = Collections.emptyList();
 }
