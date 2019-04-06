@@ -6,7 +6,12 @@ import yaklyushkin_otus.spring_2019_02.hw05.builders.GenreBuilder;
 import yaklyushkin_otus.spring_2019_02.hw05.dao.AuthorDAO;
 import yaklyushkin_otus.spring_2019_02.hw05.dao.BookDAO;
 import yaklyushkin_otus.spring_2019_02.hw05.dao.GenreDAO;
-import yaklyushkin_otus.spring_2019_02.hw05.exceptions.WrongDataException;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.AuthorHelper;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.BookHelper;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.GenreHelper;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.impl.DefaultAuthorHelper;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.impl.DefaultBookHelper;
+import yaklyushkin_otus.spring_2019_02.hw05.helpers.impl.DefaultGenreHelper;
 import yaklyushkin_otus.spring_2019_02.hw05.service.AuthorService;
 import yaklyushkin_otus.spring_2019_02.hw05.service.BookService;
 import yaklyushkin_otus.spring_2019_02.hw05.service.GenreService;
@@ -24,8 +29,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.IOException;
 
 @Configuration
 @EnableConfigurationProperties(Props.class)
@@ -58,6 +61,13 @@ public class DAOConfiguration {
         return new AuthorServiceImpl(authorDAO);
     }
 
+    @Bean("authorHelper")
+    @ConditionalOnMissingBean
+    public AuthorHelper authorHelper(@Autowired MessageService messageService, @Autowired AuthorService authorService) {
+        logger.info("AutoConfig: creating DefaultAuthorHelper");
+        return new DefaultAuthorHelper(this.language, messageService, authorService);
+    }
+
     @Bean("genreBuilder")
     @ConditionalOnMissingBean
     public GenreBuilder genreBuilder(@Autowired MessageService messageService) {
@@ -72,6 +82,13 @@ public class DAOConfiguration {
         return new GenreServiceImpl(genreDAO);
     }
 
+    @Bean("genreHelper")
+    @ConditionalOnMissingBean
+    public GenreHelper genreHelper(@Autowired MessageService messageService, @Autowired GenreService genreService) {
+        logger.info("AutoConfig: creating DefaultGenreHelper");
+        return new DefaultGenreHelper(this.language, messageService, genreService);
+    }
+
     @Bean("bookBuilder")
     @ConditionalOnMissingBean
     public BookBuilder bookBuilder(@Autowired MessageService messageService) {
@@ -84,6 +101,13 @@ public class DAOConfiguration {
     public BookService bookService(@Autowired BookDAO bookDAO) {
         logger.info("AutoConfig: creating BookServiceImpl");
         return new BookServiceImpl(bookDAO);
+    }
+
+    @Bean("bookHelper")
+    @ConditionalOnMissingBean
+    public BookHelper bookHelper(@Autowired MessageService messageService, @Autowired BookService bookService) {
+        logger.info("AutoConfig: creating DefaultBookHelper");
+        return new DefaultBookHelper(this.language, messageService, bookService);
     }
 
     private static final Logger logger = LoggerFactory.getLogger(DAOConfiguration.class);

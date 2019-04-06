@@ -1,0 +1,25 @@
+add_author -s a1 -n n1 -p p1
+add_author -s 2 -n 2 -p 2
+add_genre -n g1
+add_genre -n 2
+add_book -t mfb
+add_book_author -i 1 -a 2
+add_book_genre -i 1 -a 1
+list -t books
+list -t authors
+list -t genres
+up_author -i 2 -n yuriy
+list -t books
+up_genre -i 1 -n child
+list -t books
+list -t authors
+list -t genres
+rm_book_author -i 1 -a 2
+list -t books
+add_book_author -i 1 -a 1
+rm_book_genre -i 1 -g 1
+rm_genre -i 1
+list -t genres
+rm_book -i 1
+list -t books
+rm_author -i 2

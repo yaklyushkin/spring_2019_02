@@ -53,4 +53,8 @@ public interface BookService {
     List<Book> getAll();
 
     int count();
+
+    List<Author> getAuthors(int bookId);
+
+    List<Genre> getGenres(int bookId);
 }

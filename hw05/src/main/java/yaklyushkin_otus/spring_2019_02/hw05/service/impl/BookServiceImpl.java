@@ -129,5 +129,15 @@ public class BookServiceImpl implements BookService {
         return this.dao.count();
     }
 
+    @Override
+    public List<Author> getAuthors(int bookId) {
+        return this.dao.getAuthors(bookId);
+    }
+
+    @Override
+    public List<Genre> getGenres(int bookId) {
+        return this.dao.getGenres(bookId);
+    }
+
     private final BookDAO dao;
 }
