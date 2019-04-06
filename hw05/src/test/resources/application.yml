@@ -1,0 +1,7 @@
+hw05:
+  # russian для русского
+  # english для английского
+  language: "english"
+
+application:
+  name: "HW05 Spring Shell Application"

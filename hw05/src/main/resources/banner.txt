@@ -1,0 +1,6 @@
+--------------------------------------------------------------------------
+Application name: ${application.name}
+Spring Boot Version : ${spring-boot.formatted-version}
+--------------------------------------------------------------------------
+${AnsiColor.BRIGHT_RED}	 Spring boot banner customization example
+--------------------------------------------------------------------------
