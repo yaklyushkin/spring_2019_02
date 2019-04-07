@@ -23,18 +23,18 @@ public class DefaultGenreHelper implements GenreHelper {
     }
 
     @Override
-    public Genre change(int genreId, String genreName) throws WrongDataException {
+    public Genre change(long genreId, String genreName) throws WrongDataException {
         Genre genre = this.genreBuilder.build(genreId, genreName);
         return this.genreService.update(genre);
     }
 
     @Override
-    public Genre remove(int genreId) {
+    public Genre remove(long genreId) {
         return this.genreService.deleteById(genreId);
     }
 
     @Override
-    public Genre get(int genreId) {
+    public Genre get(long genreId) {
         return this.genreService.getById(genreId);
     }
 

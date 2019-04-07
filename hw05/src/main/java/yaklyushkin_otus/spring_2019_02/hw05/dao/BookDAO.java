@@ -4,10 +4,7 @@ import yaklyushkin_otus.spring_2019_02.hw05.domain.Author;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Book;
 import yaklyushkin_otus.spring_2019_02.hw05.domain.Genre;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public interface BookDAO {
 
@@ -17,47 +14,47 @@ public interface BookDAO {
 
     Book delete(Book book);
 
-    Book deleteById(int bookId);
+    Book deleteById(long bookId);
 
     Book addAuthor(Book book, Author author);
 
-    Book addAuthorByAuthor(int bookId, Author author);
+    Book addAuthorByAuthor(long bookId, Author author);
 
-    Book addAuthorByIds(int bookId, int authorId);
+    Book addAuthorByIds(long bookId, long authorId);
 
-    Book addAuthorByBook(Book book, int authorId);
+    Book addAuthorByBook(Book book, long authorId);
 
     Book removeAuthor(Book book, Author author);
 
-    Book removeAuthorByAuthor(int bookId, Author author);
+    Book removeAuthorByAuthor(long bookId, Author author);
 
-    Book removeAuthorByIds(int bookId, int authorId);
+    Book removeAuthorByIds(long bookId, long authorId);
 
-    Book removeAuthorByBook(Book book, int authorId);
+    Book removeAuthorByBook(Book book, long authorId);
 
     Book addGenre(Book book, Genre genre);
 
-    Book addGenreByGenre(int bookId, Genre genre);
+    Book addGenreByGenre(long bookId, Genre genre);
 
-    Book addGenreByIds(int bookId, int genreId);
+    Book addGenreByIds(long bookId, long genreId);
 
-    Book addGenreByBook(Book book, int genreId);
+    Book addGenreByBook(Book book, long genreId);
 
     Book removeGenre(Book book, Genre genre);
 
-    Book removeGenreByGenre(int bookId, Genre genre);
+    Book removeGenreByGenre(long bookId, Genre genre);
 
-    Book removeGenreByIds(int bookId, int genreId);
+    Book removeGenreByIds(long bookId, long genreId);
 
-    Book removeGenreByBook(Book book, int genreId);
+    Book removeGenreByBook(Book book, long genreId);
 
-    Book getById(int bookId);
+    Book getById(long bookId);
 
     List<Book> getAll();
 
     int count();
 
-    List<Author> getAuthors(int bookId);
+    List<Author> getAuthors(long bookId);
 
-    List<Genre> getGenres(int bookId);
+    List<Genre> getGenres(long bookId);
 }

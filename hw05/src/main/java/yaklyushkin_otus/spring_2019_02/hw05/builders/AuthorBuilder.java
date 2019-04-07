@@ -22,7 +22,7 @@ public class AuthorBuilder {
                 ErrorConsts.ERRMSG_WRONGDATA_AUTHOR_PATRONYMIC, null, locale);
     }
 
-    public final Author build(int authorId, String authorSurname,
+    public final Author build(long authorId, String authorSurname,
                               String authorName, String authorPatronymic) throws WrongDataException {
         this.checkId(authorId);
         this.checkSurname(authorSurname);
@@ -36,9 +36,9 @@ public class AuthorBuilder {
         return new Author(authorId, authorSurname, authorName, authorPatronymic);
     }
 
-    private void checkId(int genreId) throws WrongDataException {
-        if (genreId < 0) {
-            throw new WrongDataException(String.format(this.msgErrorAuthorId, genreId));
+    private void checkId(long authorId) throws WrongDataException {
+        if (authorId < 0) {
+            throw new WrongDataException(String.format(this.msgErrorAuthorId, authorId));
         }
     }
     private void checkSurname(String authorSurname) throws  WrongDataException {

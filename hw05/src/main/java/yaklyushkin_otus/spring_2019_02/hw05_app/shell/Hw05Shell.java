@@ -101,7 +101,7 @@ public class Hw05Shell {
             value = "Change author (-i --id authorId, -s --surname surname, -n --name name, -p --patronymic patronymic).",
             key = "up_author")
     public String changeAuthor(
-            @ShellOption(value = {"-i", "--id"}) int authorId,
+            @ShellOption(value = {"-i", "--id"}) long authorId,
             @ShellOption(value = {"-s", "--surname"}, defaultValue = DEFAULT_OPTION_STRING_VALUE) String surname,
             @ShellOption(value = {"-n", "--name"}, defaultValue = DEFAULT_OPTION_STRING_VALUE) String name,
             @ShellOption(value = {"-p", "--patronymic"}, defaultValue = DEFAULT_OPTION_STRING_VALUE) String patronymic)
@@ -124,7 +124,7 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Change book (-i --id bookId, -t --title title).", key = "up_book")
     public String changeBook(
-            @ShellOption(value = {"-i", "--id"}) int bookId,
+            @ShellOption(value = {"-i", "--id"}) long bookId,
             @ShellOption({"-t", "--title"}) String title)
             throws WrongDataException {
         String result;
@@ -139,7 +139,7 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Change genre (-i --id genreId, -n --name genreName).", key = "up_genre")
     public String changeGenre(
-            @ShellOption(value = {"-i", "--id"}) int genreId,
+            @ShellOption(value = {"-i", "--id"}) long genreId,
             @ShellOption({"-n", "--name"}) String name)
             throws WrongDataException {
         String result;
@@ -154,8 +154,8 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Add author to book (-i --id bookId, -a --author-id authorId).", key = "add_book_author")
     public String addAuthorToBook(
-            @ShellOption(value = {"-i", "--id"}) int bookId,
-            @ShellOption(value = {"-a", "--author-id"}) int authorId) {
+            @ShellOption(value = {"-i", "--id"}) long bookId,
+            @ShellOption(value = {"-a", "--author-id"}) long authorId) {
         String result;
         Book book = this.bookHelper.addAuthor(bookId, authorId);
         if (book != null) {
@@ -168,8 +168,8 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Add genre to book (-i --id bookId, -g --genre-id genreId).", key = "add_book_genre")
     public String addGenreToBook(
-            @ShellOption(value = {"-i", "--id"}) int bookId,
-            @ShellOption(value = {"-a", "--genre-id"}) int genreId) {
+            @ShellOption(value = {"-i", "--id"}) long bookId,
+            @ShellOption(value = {"-a", "--genre-id"}) long genreId) {
         String result;
         Book book = this.bookHelper.addGenre(bookId, genreId);
         if (book != null) {
@@ -182,8 +182,8 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Remove author from book (-i --id bookId, -a --author-id authorId).", key = "rm_book_author")
     public String removeAuthorFromBook(
-            @ShellOption(value = {"-i", "--id"}) int bookId,
-            @ShellOption(value = {"-a", "--author-id"}) int authorId) {
+            @ShellOption(value = {"-i", "--id"}) long bookId,
+            @ShellOption(value = {"-a", "--author-id"}) long authorId) {
         String result;
         Book book = this.bookHelper.removeAuthor(bookId, authorId);
         if (book != null) {
@@ -196,8 +196,8 @@ public class Hw05Shell {
 
     @ShellMethod(value = "Remove genre from book (-i --id bookId, -g --genre-id genreId).", key = "rm_book_genre")
     public String removeGenreFromBook(
-            @ShellOption(value = {"-i", "--id"}) int bookId,
-            @ShellOption(value = {"-g", "--genre-id"}) int genreId) {
+            @ShellOption(value = {"-i", "--id"}) long bookId,
+            @ShellOption(value = {"-g", "--genre-id"}) long genreId) {
         String result;
         Book book = this.bookHelper.removeGenre(bookId, genreId);
         if (book != null) {
@@ -209,7 +209,7 @@ public class Hw05Shell {
     }
 
     @ShellMethod(value = "Remove author (-i --id authorId).", key = "rm_author")
-    public String removeAuthor(@ShellOption(value = {"-i", "--id"}) int authorId) {
+    public String removeAuthor(@ShellOption(value = {"-i", "--id"}) long authorId) {
         String result;
         Author author = this.authorHelper.remove(authorId);
         if (author != null) {
@@ -221,7 +221,7 @@ public class Hw05Shell {
     }
 
     @ShellMethod(value = "Remove book (-i --id bookId).", key = "rm_book")
-    public String removeBook(@ShellOption(value = {"-i", "--id"}) int bookId) {
+    public String removeBook(@ShellOption(value = {"-i", "--id"}) long bookId) {
         String result;
         Book book = this.bookHelper.remove(bookId);
         if (book != null) {
@@ -233,7 +233,7 @@ public class Hw05Shell {
     }
 
     @ShellMethod(value = "Remove genre (-i --id genreId).", key = "rm_genre")
-    public String removeGenre(@ShellOption(value = {"-i", "--id"}) int genreId) {
+    public String removeGenre(@ShellOption(value = {"-i", "--id"}) long genreId) {
         String result;
         Genre genre = this.genreHelper.remove(genreId);
         if (genre != null) {

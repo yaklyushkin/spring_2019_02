@@ -28,12 +28,12 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public Genre deleteById(int genreId) {
+    public Genre deleteById(long genreId) {
         return this.dao.deleteById(genreId);
     }
 
     @Override
-    public Genre getById(int genreId) {
+    public Genre getById(long genreId) {
         return this.dao.getById(genreId);
     }
 

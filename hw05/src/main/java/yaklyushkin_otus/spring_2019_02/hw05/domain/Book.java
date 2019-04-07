@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class Book {
 
-    public Book(int bookId, String title, List<Author> authors, List<Genre> genres) {
+    public Book(long bookId, String title, List<Author> authors, List<Genre> genres) {
         this.bookId = bookId;
         this.title = title;
         this.authors = Collections.unmodifiableList(authors);
         this.genres = Collections.unmodifiableList(genres);
     }
 
-    public int getBookId() {
+    public long getBookId() {
         return bookId;
     }
 
@@ -60,7 +60,7 @@ public class Book {
                 '}';
     }
 
-    private final int bookId;
+    private final long bookId;
 
     private final String title;
 

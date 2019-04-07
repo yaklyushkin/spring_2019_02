@@ -28,12 +28,12 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author deleteById(int authorId) {
+    public Author deleteById(long authorId) {
         return this.dao.deleteById(authorId);
     }
 
     @Override
-    public Author getById(int authorId) {
+    public Author getById(long authorId) {
         return this.dao.getById(authorId);
     }
 

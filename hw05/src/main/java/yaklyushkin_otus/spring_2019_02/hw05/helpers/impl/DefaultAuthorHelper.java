@@ -25,7 +25,7 @@ public class DefaultAuthorHelper implements AuthorHelper {
     }
 
     @Override
-    public Author change(int authorId, StringDataHolder authorSurname, StringDataHolder authorName, StringDataHolder authorPatronymic)
+    public Author change(long authorId, StringDataHolder authorSurname, StringDataHolder authorName, StringDataHolder authorPatronymic)
             throws WrongDataException {
         Author author = this.authorService.getById(authorId);
         String surname = authorSurname.getValue();
@@ -45,12 +45,12 @@ public class DefaultAuthorHelper implements AuthorHelper {
     }
 
     @Override
-    public Author remove(int authorId) {
+    public Author remove(long authorId) {
         return this.authorService.deleteById(authorId);
     }
 
     @Override
-    public Author get(int authorId) {
+    public Author get(long authorId) {
         return this.authorService.getById(authorId);
     }
 

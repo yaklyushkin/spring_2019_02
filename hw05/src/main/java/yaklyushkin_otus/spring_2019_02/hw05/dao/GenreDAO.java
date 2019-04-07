@@ -12,9 +12,9 @@ public interface GenreDAO {
 
     Genre delete(Genre genre);
 
-    Genre deleteById(int genreId);
+    Genre deleteById(long genreId);
 
-    Genre getById(int genreId);
+    Genre getById(long genreId);
 
     List<Genre> getAll();
 

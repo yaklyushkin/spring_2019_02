@@ -23,20 +23,20 @@ public class BookBuilder {
     }
 
     public final Book build(
-            int bookId, String title, List<Author> authors, List<Genre> genres) throws WrongDataException {
+            long bookId, String title, List<Author> authors, List<Genre> genres) throws WrongDataException {
         this.checkId(bookId);
         this.checkTitle(title);
         title = StrUtils.capitalize(StrUtils.toOnlyOneInnerSpaceWithTrim(title));
         return new Book(bookId, title, authors, genres);
     }
 
-    public final Book build(int bookId, String title) throws WrongDataException {
+    public final Book build(long bookId, String title) throws WrongDataException {
         return this.build(bookId, title, this.emptyAuthors, this.emptyGenres);
     }
 
-    private void checkId(int genreId) throws WrongDataException {
-        if (genreId < 0) {
-            throw new WrongDataException(String.format(this.msgErrorBookId, genreId));
+    private void checkId(long bookId) throws WrongDataException {
+        if (bookId < 0) {
+            throw new WrongDataException(String.format(this.msgErrorBookId, bookId));
         }
     }
 

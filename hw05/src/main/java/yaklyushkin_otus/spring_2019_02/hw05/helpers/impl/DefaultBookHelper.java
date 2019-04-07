@@ -25,13 +25,13 @@ public class DefaultBookHelper implements BookHelper {
     }
 
     @Override
-    public Book change(int bookId, String title) throws WrongDataException {
+    public Book change(long bookId, String title) throws WrongDataException {
         Book book = this.bookBuilder.build(bookId, title);
         return this.bookService.update(book);
     }
 
     @Override
-    public Book remove(int bookId) {
+    public Book remove(long bookId) {
         List<Author> authors = this.bookService.getAuthors(bookId);
         List<Genre> genres = this.bookService.getGenres(bookId);
         for (Author author : authors) {
@@ -44,7 +44,7 @@ public class DefaultBookHelper implements BookHelper {
     }
 
     @Override
-    public Book get(int bookId) {
+    public Book get(long bookId) {
         return this.bookService.getById(bookId);
     }
 
@@ -54,22 +54,22 @@ public class DefaultBookHelper implements BookHelper {
     }
 
     @Override
-    public Book addAuthor(int bookId, int authorId) {
+    public Book addAuthor(long bookId, long authorId) {
         return this.bookService.addAuthorByIds(bookId, authorId);
     }
 
     @Override
-    public Book addGenre(int bookId, int genreId) {
+    public Book addGenre(long bookId, long genreId) {
         return this.bookService.addGenreByIds(bookId, genreId);
     }
 
     @Override
-    public Book removeAuthor(int bookId, int authorId) {
+    public Book removeAuthor(long bookId, long authorId) {
         return this.bookService.removeAuthorByIds(bookId, authorId);
     }
 
     @Override
-    public Book removeGenre(int bookId, int genreId) {
+    public Book removeGenre(long bookId, long genreId) {
         return this.bookService.removeGenreByIds(bookId, genreId);
     }
 

@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book deleteById(int bookId) {
+    public Book deleteById(long bookId) {
         return this.dao.deleteById(bookId);
     }
 
@@ -40,17 +40,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addAuthorByAuthor(int id, Author author) {
+    public Book addAuthorByAuthor(long id, Author author) {
         return this.dao.addAuthorByAuthor(id, author);
     }
 
     @Override
-    public Book addAuthorByIds(int bookId, int authorId) {
+    public Book addAuthorByIds(long bookId, long authorId) {
         return this.dao.addAuthorByIds(bookId, authorId);
     }
 
     @Override
-    public Book addAuthorByBook(Book bookId, int authorId) {
+    public Book addAuthorByBook(Book bookId, long authorId) {
         return this.dao.addAuthorByBook(bookId, authorId);
     }
 
@@ -60,17 +60,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book removeAuthorByAuthor(int id, Author author) {
+    public Book removeAuthorByAuthor(long id, Author author) {
         return this.dao.removeAuthorByAuthor(id, author);
     }
 
     @Override
-    public Book removeAuthorByIds(int bookId, int authorId) {
+    public Book removeAuthorByIds(long bookId, long authorId) {
         return this.dao.removeAuthorByIds(bookId, authorId);
     }
 
     @Override
-    public Book removeAuthorByBook(Book bookId, int authorId) {
+    public Book removeAuthorByBook(Book bookId, long authorId) {
         return this.dao.removeAuthorByBook(bookId, authorId);
     }
 
@@ -80,17 +80,17 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addGenreByGenre(int id, Genre genre) {
+    public Book addGenreByGenre(long id, Genre genre) {
         return this.dao.addGenreByGenre(id, genre);
     }
 
     @Override
-    public Book addGenreByIds(int bookId, int genreId) {
+    public Book addGenreByIds(long bookId, long genreId) {
         return this.dao.addGenreByIds(bookId, genreId);
     }
 
     @Override
-    public Book addGenreByBook(Book bookId, int genreId) {
+    public Book addGenreByBook(Book bookId, long genreId) {
         return this.dao.addGenreByBook(bookId, genreId);
     }
 
@@ -100,22 +100,22 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book removeGenreByGenre(int id, Genre genre) {
+    public Book removeGenreByGenre(long id, Genre genre) {
         return this.dao.removeGenreByGenre(id, genre);
     }
 
     @Override
-    public Book removeGenreByIds(int bookId, int genreId) {
+    public Book removeGenreByIds(long bookId, long genreId) {
         return this.dao.removeGenreByIds(bookId, genreId);
     }
 
     @Override
-    public Book removeGenreByBook(Book bookId, int genreId) {
+    public Book removeGenreByBook(Book bookId, long genreId) {
         return this.dao.removeGenreByBook(bookId, genreId);
     }
 
     @Override
-    public Book getById(int bookId) {
+    public Book getById(long bookId) {
         return this.dao.getById(bookId);
     }
 
@@ -130,12 +130,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Author> getAuthors(int bookId) {
+    public List<Author> getAuthors(long bookId) {
         return this.dao.getAuthors(bookId);
     }
 
     @Override
-    public List<Genre> getGenres(int bookId) {
+    public List<Genre> getGenres(long bookId) {
         return this.dao.getGenres(bookId);
     }
 

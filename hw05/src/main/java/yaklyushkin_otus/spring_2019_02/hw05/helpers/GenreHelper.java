@@ -9,11 +9,11 @@ public interface GenreHelper {
 
     Genre create(String genreName) throws WrongDataException;
 
-    Genre change(int genreId, String genreName) throws WrongDataException;
+    Genre change(long genreId, String genreName) throws WrongDataException;
 
-    Genre remove(int genreId);
+    Genre remove(long genreId);
 
-    Genre get(int genreId);
+    Genre get(long genreId);
 
     List<Genre> getAll();
 }

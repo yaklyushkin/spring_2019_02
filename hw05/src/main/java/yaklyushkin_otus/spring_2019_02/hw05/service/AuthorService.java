@@ -12,9 +12,9 @@ public interface AuthorService {
 
     Author delete(Author author);
 
-    Author deleteById(int authorId);
+    Author deleteById(long authorId);
 
-    Author getById(int authorId);
+    Author getById(long authorId);
 
     List<Author> getAll();
 

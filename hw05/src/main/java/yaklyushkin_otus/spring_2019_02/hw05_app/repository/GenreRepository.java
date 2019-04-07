@@ -24,7 +24,7 @@ public class GenreRepository implements GenreDAO {
 
     @Override
     public Genre insert(Genre Genre) {
-        int GenreId = this.getMaxId();
+        long GenreId = this.getMaxId();
         Genre = new Genre(GenreId, Genre.getGenreName());
         final Map<String, Object> parameters = this.construct(Genre);
         int recordsAffected = this.jdbcTemplate.update(
@@ -52,13 +52,13 @@ public class GenreRepository implements GenreDAO {
     }
 
     @Override
-    public Genre deleteById(int GenreId) {
+    public Genre deleteById(long GenreId) {
         final Genre Genre = this.getById(GenreId);
         return this.delete(Genre);
     }
 
     @Override
-    public Genre getById(int GenreId) {
+    public Genre getById(long GenreId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("genre_id", GenreId);
         return this.jdbcTemplate.queryForObject(
@@ -82,15 +82,15 @@ public class GenreRepository implements GenreDAO {
 
         @Override
         public Genre mapRow(ResultSet resultSet, int i) throws SQLException {
-            final int genreId = resultSet.getInt("genre_id");
+            final long genreId = resultSet.getLong("genre_id");
             final String genreName = resultSet.getString("genre_name");
             return new Genre(genreId, genreName);
         }
     }
 
-    private int getMaxId() {
-        Integer maxId = this.jdbcTemplate.queryForObject(
-                "select max(genre_id) from genres", this.emptyMap, Integer.class);
+    private long getMaxId() {
+        Long maxId = this.jdbcTemplate.queryForObject(
+                "select max(genre_id) from genres", this.emptyMap, Long.class);
         if (maxId == null) {
             return 1;
         }

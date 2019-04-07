@@ -18,13 +18,13 @@ public class GenreBuilder {
                 ErrorConsts.ERRMSG_WRONGDATA_GENRE_NAME, null, locale);
     }
 
-    public final Genre build(int genreId, String genreName) throws WrongDataException {
+    public final Genre build(long genreId, String genreName) throws WrongDataException {
         this.checkId(genreId);
         this.checkName(genreName);
         return new Genre(genreId, genreName);
     }
 
-    private void checkId(int genreId) throws WrongDataException {
+    private void checkId(long genreId) throws WrongDataException {
         if (genreId < 0) {
             throw new WrongDataException(String.format(this.msgErrorGenreId, genreId));
         }

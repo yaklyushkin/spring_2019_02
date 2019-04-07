@@ -10,12 +10,12 @@ public interface AuthorHelper {
     Author create(String authorSurname, String authorName, String authorPatronymic)
             throws WrongDataException;
 
-    Author change(int authorId, StringDataHolder authorSurname, StringDataHolder authorName,
+    Author change(long authorId, StringDataHolder authorSurname, StringDataHolder authorName,
                   StringDataHolder authorPatronymic) throws WrongDataException;
 
-    Author remove(int authorId);
+    Author remove(long authorId);
 
-    Author get(int authorId);
+    Author get(long authorId);
 
     List<Author> getAll();
 }

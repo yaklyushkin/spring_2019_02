@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Author {
 
-    public Author(int authorId, String authorSurname, String authorName, String authorPatronymic) {
+    public Author(long authorId, String authorSurname, String authorName, String authorPatronymic) {
         this.authorId = authorId;
         this.authorSurname = authorSurname;
         this.authorName = authorName;
         this.authorPatronymic = authorPatronymic;
     }
 
-    public int getAuthorId() {
+    public long getAuthorId() {
         return authorId;
     }
 
@@ -58,7 +58,7 @@ public class Author {
                 '}';
     }
 
-    private final int authorId;
+    private final long authorId;
 
     private final String authorSurname;
 

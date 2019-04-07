@@ -9,19 +9,19 @@ public interface BookHelper {
 
     Book create(String title) throws WrongDataException;
 
-    Book change(int bookId, String title) throws WrongDataException;
+    Book change(long bookId, String title) throws WrongDataException;
 
-    Book remove(int bookId);
+    Book remove(long bookId);
 
-    Book get(int bookId);
+    Book get(long bookId);
 
     List<Book> getAll();
 
-    Book addAuthor(int bookId, int authorId);
+    Book addAuthor(long bookId, long authorId);
 
-    Book addGenre(int bookId, int genreId);
+    Book addGenre(long bookId, long genreId);
 
-    Book removeAuthor(int bookId, int authorId);
+    Book removeAuthor(long bookId, long authorId);
 
-    Book removeGenre(int bookId, int genreId);
+    Book removeGenre(long bookId, long genreId);
 }

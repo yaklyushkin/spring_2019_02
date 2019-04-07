@@ -14,47 +14,47 @@ public interface BookService {
 
     Book delete(Book book);
 
-    Book deleteById(int bookId);
+    Book deleteById(long bookId);
 
     Book addAuthor(Book book, Author author);
 
-    Book addAuthorByAuthor(int id, Author author);
+    Book addAuthorByAuthor(long id, Author author);
 
-    Book addAuthorByIds(int bookId, int authorId);
+    Book addAuthorByIds(long bookId, long authorId);
 
-    Book addAuthorByBook(Book bookId, int authorId);
+    Book addAuthorByBook(Book bookId, long authorId);
 
     Book removeAuthor(Book book, Author author);
 
-    Book removeAuthorByAuthor(int id, Author author);
+    Book removeAuthorByAuthor(long id, Author author);
 
-    Book removeAuthorByIds(int bookId, int authorId);
+    Book removeAuthorByIds(long bookId, long authorId);
 
-    Book removeAuthorByBook(Book bookId, int authorId);
+    Book removeAuthorByBook(Book bookId, long authorId);
 
     Book addGenre(Book book, Genre genre);
 
-    Book addGenreByGenre(int id, Genre genre);
+    Book addGenreByGenre(long id, Genre genre);
 
-    Book addGenreByIds(int bookId, int genreId);
+    Book addGenreByIds(long bookId, long genreId);
 
-    Book addGenreByBook(Book bookId, int genreId);
+    Book addGenreByBook(Book bookId, long genreId);
 
     Book removeGenre(Book book, Genre genre);
 
-    Book removeGenreByGenre(int id, Genre genre);
+    Book removeGenreByGenre(long id, Genre genre);
 
-    Book removeGenreByIds(int bookId, int genreId);
+    Book removeGenreByIds(long bookId, long genreId);
 
-    Book removeGenreByBook(Book bookId, int genreId);
+    Book removeGenreByBook(Book bookId, long genreId);
 
-    Book getById(int bookId);
+    Book getById(long bookId);
 
     List<Book> getAll();
 
     int count();
 
-    List<Author> getAuthors(int bookId);
+    List<Author> getAuthors(long bookId);
 
-    List<Genre> getGenres(int bookId);
+    List<Genre> getGenres(long bookId);
 }

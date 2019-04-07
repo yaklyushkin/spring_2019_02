@@ -28,7 +28,7 @@ public class BookRepository implements BookDAO {
 
     @Override
     public Book insert(Book book) {
-        int bookId = this.getMaxId();
+        long bookId = this.getMaxId();
         book = new Book(bookId, book.getTitle(), book.getAuthors(), book.getGenres());
         final Map<String, Object> parameters = this.construct(book);
         int recordsAffected = this.jdbcTemplate.update(
@@ -60,7 +60,7 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book deleteById(int bookId) {
+    public Book deleteById(long bookId) {
         final Book book = this.getById(bookId);
         return this.delete(book);
     }
@@ -71,12 +71,12 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book addAuthorByAuthor(int bookId, Author author) {
+    public Book addAuthorByAuthor(long bookId, Author author) {
         return this.addAuthorByIds(bookId, author.getAuthorId());
     }
 
     @Override
-    public Book addAuthorByIds(int bookId, int authorId) {
+    public Book addAuthorByIds(long bookId, long authorId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
         parameters.put("author_id", authorId);
@@ -87,7 +87,7 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book addAuthorByBook(Book book, int authorId) {
+    public Book addAuthorByBook(Book book, long authorId) {
         return this.addAuthorByIds(book.getBookId(), authorId);
     }
 
@@ -97,12 +97,12 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book removeAuthorByAuthor(int bookId, Author author) {
+    public Book removeAuthorByAuthor(long bookId, Author author) {
         return this.removeAuthorByIds(bookId, author.getAuthorId());
     }
 
     @Override
-    public Book removeAuthorByIds(int bookId, int authorId) {
+    public Book removeAuthorByIds(long bookId, long authorId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
         parameters.put("author_id", authorId);
@@ -113,7 +113,7 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book removeAuthorByBook(Book book, int authorId) {
+    public Book removeAuthorByBook(Book book, long authorId) {
         return this.removeAuthorByIds(book.getBookId(), authorId);
     }
 
@@ -123,12 +123,12 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book addGenreByGenre(int bookId, Genre genre) {
+    public Book addGenreByGenre(long bookId, Genre genre) {
         return this.addGenreByIds(bookId, genre.getGenreId());
     }
 
     @Override
-    public Book addGenreByIds(int bookId, int genreId) {
+    public Book addGenreByIds(long bookId, long genreId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
         parameters.put("genre_id", genreId);
@@ -139,7 +139,7 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book addGenreByBook(Book book, int genreId) {
+    public Book addGenreByBook(Book book, long genreId) {
         return this.addGenreByIds(book.getBookId(), genreId);
     }
 
@@ -149,12 +149,12 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book removeGenreByGenre(int bookId, Genre genre) {
+    public Book removeGenreByGenre(long bookId, Genre genre) {
         return this.removeGenreByIds(bookId, genre.getGenreId());
     }
 
     @Override
-    public Book removeGenreByIds(int bookId, int genreId) {
+    public Book removeGenreByIds(long bookId, long genreId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
         parameters.put("genre_id", genreId);
@@ -165,12 +165,12 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public Book removeGenreByBook(Book book, int genreId) {
+    public Book removeGenreByBook(Book book, long genreId) {
         return this.removeGenreByIds(book.getBookId(), genreId);
     }
 
     @Override
-    public Book getById(int bookId) {
+    public Book getById(long bookId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
         return this.jdbcTemplate.queryForObject(
@@ -191,28 +191,28 @@ public class BookRepository implements BookDAO {
     }
 
     @Override
-    public List<Author> getAuthors(int bookId) {
+    public List<Author> getAuthors(long bookId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
-        List<Integer> authorsIds = this.jdbcTemplate.queryForList(
+        List<Long> authorsIds = this.jdbcTemplate.queryForList(
                 "select author_id from book_r_author where book_id = :book_id",
-                parameters, Integer.class);
+                parameters, Long.class);
         List<Author> result = new ArrayList<>(authorsIds.size());
-        for (int authorId : authorsIds) {
+        for (long authorId : authorsIds) {
             result.add(this.authorDAO.getById(authorId));
         }
         return result;
     }
 
     @Override
-    public List<Genre> getGenres(int bookId) {
+    public List<Genre> getGenres(long bookId) {
         final Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("book_id", bookId);
-        List<Integer> genreIds = this.jdbcTemplate.queryForList(
+        List<Long> genreIds = this.jdbcTemplate.queryForList(
                 "select genre_id from book_r_genre where book_id = :book_id",
-                parameters, Integer.class);
+                parameters, Long.class);
         List<Genre> result = new ArrayList<>(genreIds.size());
-        for (int genreId : genreIds) {
+        for (long genreId : genreIds) {
             result.add(this.genreDAO.getById(genreId));
         }
         return result;
@@ -222,7 +222,7 @@ public class BookRepository implements BookDAO {
 
         @Override
         public Book mapRow(ResultSet resultSet, int i) throws SQLException {
-            final int bookId = resultSet.getInt("book_id");
+            final long bookId = resultSet.getLong("book_id");
             final String title = resultSet.getString("title");
             List<Author> authors = getAuthors(bookId);
             List<Genre> genres = getGenres(bookId);
@@ -230,9 +230,9 @@ public class BookRepository implements BookDAO {
         }
     }
 
-    private int getMaxId() {
-        Integer maxId = this.jdbcTemplate.queryForObject(
-                "select max(book_id) from books", this.emptyMap, Integer.class);
+    private long getMaxId() {
+        Long maxId = this.jdbcTemplate.queryForObject(
+                "select max(book_id) from books", this.emptyMap, Long.class);
         if (maxId == null) {
             return 1;
         }

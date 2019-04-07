@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Genre {
 
-    public Genre(int genreId, String genreName) {
+    public Genre(long genreId, String genreName) {
         this.genreId = genreId;
         this.genreName = genreName;
     }
 
-    public int getGenreId() {
+    public long getGenreId() {
         return genreId;
     }
 
@@ -44,7 +44,7 @@ public class Genre {
                 '}';
     }
 
-    private final int genreId;
+    private final long genreId;
 
     private final String genreName;
 }
