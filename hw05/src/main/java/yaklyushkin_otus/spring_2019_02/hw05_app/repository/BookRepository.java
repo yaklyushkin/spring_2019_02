@@ -181,7 +181,40 @@ public class BookRepository implements BookDAO {
 
     @Override
     public List<Book> getAll() {
-        return this.jdbcTemplate.query("select * from books", this.emptyMap, new BookMapper());
+        // Получаем отображение авторов на book_id
+        List<BookAuthor> authorsList = this.jdbcTemplate.query(
+                "select * from book_r_author r inner join authors a on r.author_id = a.author_id order by r.book_id",
+                new BookAuthorMapper());
+        Map<Long, List<Author>> authors = new HashMap<>(authorsList.size());
+        if (authorsList.size() != 0) {
+            long previousBookId = -1;
+            for (BookAuthor record : authorsList) {
+                if (record.bookId != previousBookId) {
+                    authors.put(record.bookId, new ArrayList<Author>());
+                    previousBookId = record.bookId;
+                }
+                authors.get(record.bookId).add(record.author);
+            }
+        }
+
+        // Получаем отображение жанров на book_id
+        List<BookGenre> genresList = this.jdbcTemplate.query(
+                "select * from book_r_genre r inner join genres a on r.genre_id = a.genre_id order by r.book_id",
+                new BookGenreMapper());
+        Map<Long, List<Genre>> genres = new HashMap<>(genresList.size());
+        if (genresList.size() != 0) {
+            long previousBookId = -1;
+            for (BookGenre record : genresList) {
+                if (record.bookId != previousBookId) {
+                    genres.put(record.bookId, new ArrayList<Genre>());
+                    previousBookId = record.bookId;
+                }
+                genres.get(record.bookId).add(record.genre);
+            }
+        }
+
+        AllBookMapper mapper = new AllBookMapper(authors, genres);
+        return this.jdbcTemplate.query("select * from books", this.emptyMap, mapper);
     }
 
     @Override
@@ -216,6 +249,81 @@ public class BookRepository implements BookDAO {
             result.add(this.genreDAO.getById(genreId));
         }
         return result;
+    }
+
+    private static class BookAuthor {
+
+        public BookAuthor(long bookId, Author author) {
+            this.bookId = bookId;
+            this.author = author;
+        }
+
+        private final long bookId;
+
+        private final Author author;
+    }
+
+    private static class BookAuthorMapper implements RowMapper<BookAuthor> {
+
+        @Override
+        public BookAuthor mapRow(ResultSet resultSet, int i) throws SQLException {
+            final long bookId = resultSet.getLong("book_id");
+            final Author author = AuthorCreator.create(resultSet, i);
+            return new BookAuthor(bookId, author);
+        }
+    }
+
+    private static class BookGenre {
+
+        public BookGenre(long bookId, Genre genre) {
+            this.bookId = bookId;
+            this.genre = genre;
+        }
+
+        private final long bookId;
+
+        private final Genre genre;
+    }
+
+    private static class BookGenreMapper implements RowMapper<BookGenre> {
+
+        @Override
+        public BookGenre mapRow(ResultSet resultSet, int i) throws SQLException {
+            final long bookId = resultSet.getLong("book_id");
+            final Genre genre = GenreCreator.create(resultSet, i);
+            return new BookGenre(bookId, genre);
+        }
+    }
+
+    private static class AllBookMapper implements RowMapper<Book> {
+
+        public AllBookMapper(Map<Long, List<Author>> authors, Map<Long, List<Genre>> genres) {
+            this.authors = authors;
+            this.genres = genres;
+        }
+
+        @Override
+        public Book mapRow(ResultSet resultSet, int i) throws SQLException {
+            final long bookId = resultSet.getLong("book_id");
+            List<Author> bookAuthors;
+            if (this.authors.containsKey(bookId)) {
+                bookAuthors = this.authors.get(bookId);
+            } else {
+                bookAuthors = Collections.emptyList();
+            }
+            List<Genre> bookGenres;
+            if (this.genres.containsKey(bookId)) {
+                bookGenres = this.genres.get(bookId);
+            } else {
+                bookGenres = Collections.emptyList();
+            }
+            final String title = resultSet.getString("title");
+            return new Book(bookId, title, bookAuthors, bookGenres);
+        }
+
+        private final Map<Long, List<Author>> authors;
+
+        private final Map<Long, List<Genre>> genres;
     }
 
     private class BookMapper implements RowMapper<Book> {

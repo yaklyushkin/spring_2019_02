@@ -3,8 +3,13 @@ add_author -s 2 -n 2 -p 2
 add_genre -n g1
 add_genre -n 2
 add_book -t mfb
+add_book_author -i 1 -a 1
 add_book_author -i 1 -a 2
 add_book_genre -i 1 -a 1
+add_book -t new
+add_book_author -i 2 -a 2
+add_book_genre -i 2-a 1
+add_book_genre -i 2-a 2
 list -t books
 list -t authors
 list -t genres

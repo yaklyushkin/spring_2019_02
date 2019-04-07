@@ -82,9 +82,7 @@ public class GenreRepository implements GenreDAO {
 
         @Override
         public Genre mapRow(ResultSet resultSet, int i) throws SQLException {
-            final long genreId = resultSet.getLong("genre_id");
-            final String genreName = resultSet.getString("genre_name");
-            return new Genre(genreId, genreName);
+            return GenreCreator.create(resultSet, i);
         }
     }
 
